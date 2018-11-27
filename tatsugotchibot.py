@@ -49,8 +49,8 @@ async def help(ctx):
 
 @client.command()
 async def enable():
+    global enabled
     if enabled == "false":
-        global enabled
         enabled = "true"
         await client.say("Timer is now enabled!")
     else:
@@ -58,8 +58,8 @@ async def enable():
 
 @client.command()
 async def disable():
+    global enabled
     if enabled == "true":
-        global enabled
         enabled = "false"
         await client.say("Timer is now disabled!")
     else:
