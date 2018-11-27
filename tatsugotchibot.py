@@ -85,6 +85,7 @@ async def say(*args):
 async def enable():
     if enabled == False:
         enabled = True
+        await client.say("Timer is now enabled!")
     else:
         await client.say("Timer is already enabled!)
 
@@ -92,6 +93,7 @@ async def enable():
 async def disable():
     if enabled == True:
         enabled = False
+        await client.say("Timer is now disabled!")
     else:
         await client.say("Timer is already disabled!")
     
