@@ -6,6 +6,7 @@ import time
 import random
 import os
 
+enabled = False
 
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
