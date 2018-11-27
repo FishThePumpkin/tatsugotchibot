@@ -81,6 +81,21 @@ async def say(*args):
         output += ' '
     await client.say(output)
 
+@client.command()
+async def enable():
+    if enabled == False:
+        enabled = True
+    else:
+        await client.say("Timer is already enabled!)
 
+@client.command()
+async def disable():
+    if enabled == True:
+        enabled = False
+    else:
+        await client.say("Timer is already disabled!")
+    
+    
+    
 client.loop.create_task(change_status())
 client.run(os.environ['BOT_TOKEN'])    
