@@ -87,7 +87,7 @@ async def enable():
         enabled = True
         await client.say("Timer is now enabled!")
     else:
-        await client.say("Timer is already enabled!)
+        await client.say("Timer is already enabled!")
 
 @client.command()
 async def disable():
