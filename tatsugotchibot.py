@@ -6,11 +6,11 @@ import time
 import random
 import os
 
-enabled = False
-
 client = commands.Bot(command_prefix = "-")
 client.remove_command('help')
 status = ['Cat\'s', 'voice', 'is', 'so', 'nice', 'owo']
+
+enabled = "false"
 
 async def change_status():
     await client.wait_until_ready()
@@ -47,32 +47,50 @@ async def help(ctx):
 
     await client.say(embed=embed) #send_message(author, embed=embed)
 
+@client.command()
+async def enable():
+    if enabled == "false":
+        enabled = "true"
+        await client.say("Timer is now enabled!")
+    else:
+        await client.say("Timer is already enabled!")
+
+@client.command()
+async def disable():
+    if enabled == "true":
+        enabled = "false"
+        await client.say("Timer is now disabled!")
+    else:
+        await client.say("Timer is already disabled!")
+
 
 @client.command(pass_context=True)
 async def tg(ctx, *train):
-    tgstr = ''
-    for word in train:
-        tgstr += word
-    #await client.say(tgstr)
-    if tgstr == 'train':
-        ran = random.randint(110,200)/10
-        time.sleep(ran)
-        await client.say("Training is available! <@{}>".format(ctx.message.author.id))
+    if enabled:
+        tgstr = ''
+        for word in train:
+            tgstr += word
+        #await client.say(tgstr)
+        if tgstr == 'train':
+            ran = random.randint(140,200)/10
+            time.sleep(ran)
+            await client.say("Training is available! <@{}>".format(ctx.message.author.id))
+            
+        if tgstr == 'feed':
+            await client.say("I will remind you to feed your pet in 8 hours!")
+            time.sleep(28800)
+            await client.say("You should feed your pet! <@{}>".format(ctx.message.author.id))
+            
+        if tgstr == 'clean':
+            await client.say("I will remind you to clean after your pet in 8 hours!")
+            time.sleep(28800)
+            await client.say("You should clean after your pet! <@{}>".format(ctx.message.author.id))
+            
+        if tgstr == 'play':
+            await client.say("I will remind you to play with your pet in 8 hours!")
+            time.sleep(28800)
+            await client.say("You should play with your pet! <@{}>".format(ctx.message.author.id))
         
-    if tgstr == 'feed':
-        await client.say("I will remind you to feed your pet in 8 hours!")
-        time.sleep(28800)
-        await client.say("You should feed your pet! <@{}>".format(ctx.message.author.id))
-        
-    if tgstr == 'clean':
-        await client.say("I will remind you to clean after your pet in 8 hours!")
-        time.sleep(28800)
-        await client.say("You should clean after your pet! <@{}>".format(ctx.message.author.id))
-        
-    if tgstr == 'play':
-        await client.say("I will remind you to play with your pet in 8 hours!")
-        time.sleep(28800)
-        await client.say("You should play with your pet! <@{}>".format(ctx.message.author.id))
 
 @client.command()
 async def say(*args):
@@ -81,22 +99,6 @@ async def say(*args):
         output += word
         output += ' '
     await client.say(output)
-
-@client.command()
-async def enable():
-    if enabled == False:
-        enabled = True
-        await client.say("Timer is now enabled!")
-    else:
-        await client.say("Timer is already enabled!")
-
-@client.command()
-async def disable():
-    if enabled == True:
-        enabled = False
-        await client.say("Timer is now disabled!")
-    else:
-        await client.say("Timer is already disabled!")
     
     
     
