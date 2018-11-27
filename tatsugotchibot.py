@@ -68,7 +68,8 @@ async def disable():
 
 @client.command(pass_context=True)
 async def tg(ctx, *train):
-    if enabled:
+    global enabled
+    if enabled == "true":
         tgstr = ''
         for word in train:
             tgstr += word
