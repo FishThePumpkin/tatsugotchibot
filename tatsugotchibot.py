@@ -54,7 +54,7 @@ async def tg(ctx, *train):
         tgstr += word
     #await client.say(tgstr)
     if tgstr == 'train':
-        ran = random.randint(140,200)/10
+        ran = random.randint(110,160)/10
         time.sleep(ran)
         await client.say("Training is available! <@{}>".format(ctx.message.author.id))
 
