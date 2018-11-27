@@ -57,6 +57,18 @@ async def tg(ctx, *train):
         ran = random.randint(110,200)/10
         time.sleep(ran)
         await client.say("Training is available! <@{}>".format(ctx.message.author.id))
+    if tgstr == 'feed':
+        await client.say("I will remind you to feed your pet in 8 hours!")
+        time.sleep(28800)
+        await client.say("You should feed your pet! <@{}>".format(ctx.message.author.id))
+    if tgstr == 'clean':
+        await client.say("I will remind you to clean after your pet in 8 hours!")
+        time.sleep(28800)
+        await client.say("You should clean after your pet! <@{}>".format(ctx.message.author.id))
+    if tgstr == 'play':
+        await client.say("I will remind you to play with your pet in 8 hours!")
+        time.sleep(28800)
+        await client.say("You should play with your pet! <@{}>".format(ctx.message.author.id))
 
 @client.command()
 async def say(*args):
