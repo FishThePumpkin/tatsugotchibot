@@ -4,6 +4,7 @@ import asyncio
 from itertools import cycle
 import time
 import random
+from random import *
 import os
 
 client = commands.Bot(command_prefix = "-")
